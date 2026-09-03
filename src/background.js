@@ -1,0 +1,1 @@
+chrome.runtime.onMessage.addListener((msg, s, resp) => { if(msg.action === 'validateEmail') { resp({valid: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(msg.value)}); } if(msg.action === 'validateUrl') { try { new URL(msg.value); resp({valid: true}); } catch(e) { resp({valid: false}); } } if(msg.action === 'validatePhone') { resp({valid: /^\+?[\d\s\-()]{7,}$/.test(msg.value)}); } });
